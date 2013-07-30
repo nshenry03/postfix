@@ -20,6 +20,8 @@
 
 include_recipe "postfix"
 
+smtp_sasl = Chef::EncryptedDataBagItem.load("encrypted_data_bags", "postfix", Chef::EncryptedDataBagItem::DEFAULT_SECRET_FILE)
+
 sasl_pkgs = []
 
 # We use case instead of value_for_platform_family because we need
@@ -53,6 +55,10 @@ template "/etc/postfix/sasl_passwd" do
   owner "root"
   group "root"
   mode 0400
+  variables(
+    :smtp_sasl_passwd => smtp_sasl[node.chef_environment]['passwd'],
+    :smtp_sasl_user_name => smtp_sasl[node.chef_environment]['user']
+  )
   notifies :run, "execute[postmap-sasl_passwd]", :immediately
   notifies :restart, "service[postfix]"
 end
