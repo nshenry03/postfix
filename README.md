@@ -1,8 +1,3 @@
-Background
-==========
-NOTE: This cookbook was forked from Opscode's [Postfix Cookbook](https://github.com/opscode-cookbooks/postfix). The changes are related to Joshua Timberman's [Encrypted Data Bag for Postfix SASL Authentication](http://jtimberman.housepub.org/blog/2011/08/06/encrypted-data-bag-for-postfix-sasl-authentication) post; however, I also wanted to add support for multiple environments.
-
-
 Description
 ===========
 
