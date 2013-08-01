@@ -20,7 +20,7 @@
 
 include_recipe "postfix"
 
-smtp_sasl = Chef::EncryptedDataBagItem.load("encrypted_data_bags", "postfix", Chef::EncryptedDataBagItem::DEFAULT_SECRET_FILE)
+smtp_sasl = Chef::EncryptedDataBagItem.load("encrypted_data_bags", "postfix")
 
 sasl_pkgs = []
 
