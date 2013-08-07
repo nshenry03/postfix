@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/nshenry03/postfix.png?branch=master)](https://travis-ci.org/nshenry03/postfix)
+[![Code Climate](https://codeclimate.com/github/nshenry03/postfix.png)](https://codeclimate.com/github/nshenry03/postfix)
 
 Background
 ==========
