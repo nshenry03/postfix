@@ -44,6 +44,25 @@ mailbox_command = /usr/bin/procmail -a "$EXTENSION"
 mailbox_size_limit = 0
 recipient_delimiter = +
 
+<% if node['platform'] == 'centos' -%>
+# QUEUE AND PROCESS OWNERSHIP
+#
+# The mail_owner parameter specifies the owner of the Postfix queue
+# and of most Postfix daemon processes.  Specify the name of a user
+# account THAT DOES NOT SHARE ITS USER OR GROUP ID WITH OTHER ACCOUNTS
+# AND THAT OWNS NO OTHER FILES OR PROCESSES ON THE SYSTEM.  In
+# particular, don't specify nobody or daemon. PLEASE USE A DEDICATED
+# USER.
+#
+mail_owner = postfix
+
+# setgid_group: The group for mail submission and queue management
+# commands.  This must be a group name with a numerical group ID that
+# is not shared with other accounts, not even with the Postfix account.
+#
+setgid_group = postdrop
+<% end -%>
+
 milter_default_action = <%= node['postfix']['milter_default_action'] %>
 milter_protocol = <%= node['postfix']['milter_protocol'] %>
 smtpd_milters = <%= node['postfix']['smtpd_milters'] %>
